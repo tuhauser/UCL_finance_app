@@ -1,7 +1,7 @@
 function get_grant_keydata(filename)
 
 if ~nargin
-    filename = '.\axiom_data\axiom_grant_overview.xlsx';
+    filename = '.\axiom_data\axiom_grant_overview.xlsx'; % to get this: project balances - project reports > filters: award type: sponsored award > Project; task;Award
 end
 
 
