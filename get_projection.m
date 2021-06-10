@@ -39,7 +39,7 @@ for c = 1:length(categories)
 end
 
 if settings.verbose
-    diary([settings.report_dir datestr(datetime('today'),'yyyy_mm')  settings.grant_name{:} '_projection.log'])
+    diary([settings.report_dir datestr(datetime('today'),'yyyy_mm') '_' settings.grant_name{:} '_projection.log'])
     fprintf(['PROJECTIONS: ' settings.grant_name{:} '\n'])
     for c = 1:length(categories)
         fprintf([cat_desc{c} ' (' categories{c} '):\n'])

@@ -6,7 +6,7 @@ startdat = datenum(datetime('today','Format','yyyy-MM-dd') - calmonths(settings.
 all_data = all_data(find(datenum(all_data.TransactionDate)>=startdat),:);
 
 %% create report for each category separately
-fileID = fopen([settings.report_dir datestr(datetime('today'),'yyyy_mm')  settings.grant_name{:} '_detailedReport.txt'],'w');
+fileID = fopen([settings.report_dir datestr(datetime('today'),'yyyy_mm') '_' settings.grant_name{:} '_detailedReport.txt'],'w');
 for c = 1:length(settings.categories_desc)
     fprintf(fileID,[settings.categories_desc{c} ' (' settings.categories{c} '):\n']);
     
