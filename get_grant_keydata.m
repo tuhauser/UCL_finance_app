@@ -1,7 +1,7 @@
 function get_grant_keydata(filename)
 
 if ~nargin
-    filename = '.\axiom_data\axiom_grant_overview.xlsx'; % to get this: project balances - project reports > filters: award type: sponsored award > Project; task;Award
+    filename = '.\axiom_data\axiom_grant_overview.xlsx'; % to get this: income&expenditure: project balances - project reports > filters: award type: sponsored award > Project; task;Award
 end
 
 
@@ -16,6 +16,8 @@ for g = 1:length(grants)
     settings = [];
     settings.grant_no = int2str(grants(g));
     settings.grant_name = data.AwardName(find(data.Project==grants(g),1,'first'));
+    tmp = strsplit(settings.grant_name{:},':');
+    settings.grant_name = tmp(1);
     settings.categories = data.TaskNumber(find(data.Project==grants(g)));
     settings.categories_desc = data.TaskName(find(data.Project==grants(g)));
     settings.startDate = data.ProjectStart(find(data.Project==grants(g),1,'first'));

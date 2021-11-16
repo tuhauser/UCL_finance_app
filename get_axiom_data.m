@@ -1,7 +1,8 @@
 function [data,all_data] = get_axiom_data(settings)
 
 %% read in data
-all_data = readtable(['.\axiom_data\' settings.grant_no '.xlsx']);
+list = dir(['.\axiom_data\' settings.grant_no '*.xlsx']);
+all_data = readtable(['.\axiom_data\' list.name]);
 del_idx = find(isnan(all_data.ProjectName));
 all_data(del_idx,:) = [];
 
