@@ -24,7 +24,11 @@ for c = 1:length(settings.categories_desc)
                 fprintf(fileID,[datestr(tmp_data.TransactionDate(i)) '\t' tmp_data.CurrencyCode{i} ' ' num2str(tmp_data.AccountedAmount(i),'%.2f') '\t' tmp_data.NominalName{i} '\t' tmp_data.TransactionDescription{i} '\t' tmp_data.JournalNo_{i} '\n']);
                 
             else
-                fprintf(fileID,[datestr(tmp_data.TransactionDate(i)) '\t' tmp_data.CurrencyCode{i} ' ' num2str(tmp_data.AccountedAmount(i),'%.2f') '\t' tmp_data.NominalName{i} '\t' tmp_data.TransactionDescription{i} '\n']);
+                try
+                    fprintf(fileID,[datestr(tmp_data.TransactionDate(i)) '\t' tmp_data.CurrencyCode{i} ' ' num2str(tmp_data.AccountedAmount(i),'%.2f') '\t' tmp_data.NominalName{i} '\t' tmp_data.TransactionDescription{i} '\n']);
+                catch
+                    fprintf(fileID,[datestr(tmp_data.TransactionDate(i)) '\t' num2str(tmp_data.AccountedAmount(i),'%.2f') '\t \t' tmp_data.TransactionDescription{i} '\n']);
+                end
             end
         end
         fprintf(fileID,'\n\n');

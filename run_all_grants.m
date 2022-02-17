@@ -1,5 +1,7 @@
 function run_all_grants()
-addpath(genpath('D:\myDocuments\work\Projects\gen_funct\'))
+fn = fileparts(pwd);
+addpath([fn(1) ':\myDocuments\work\Tools\spm\'])
+addpath(genpath([fn(1) ':\myDocuments\work\Projects\gen_funct\']))
 
 %% get grant settings
 list = dir('grant_*.mat');
