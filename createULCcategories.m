@@ -82,6 +82,14 @@ c = c+1;
 categories.type{c}  = 'D-STU';
 categories.name{c}  = 'Studentship';
 
+c = c+1;
+categories.type{c}  = '100';
+categories.name{c}  = 'UCL';
+
+c = c+1;
+categories.type{c}  = '22';
+categories.name{c}  = 'UCL';
+
 % c = c+1;
 % categories.type{c}  = '';
 % categories.name{c}  = '';

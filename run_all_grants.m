@@ -19,14 +19,18 @@ for g = 1:length(list)
     settings.save_plot = 1;
     
     %% load data
-    [data,all_data] = get_axiom_data(settings);
+    [data,all_data,settings] = get_axiom_data(settings);
 
     %% get detailed data
     settings.last_N_months = 2;
     report_all_expenses(all_data,settings);
     
     %% aggregate (and display) data
-    [report, total] =  get_report(data, settings);
+    if ~isempty(data)
+        [report, total] =  get_report(data, settings);
+    else
+        fprintf('\n *** Skipping report for %s as no data. *** \n',settings.grant_name{1})
+    end
     
     %%
 %     pause()
