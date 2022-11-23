@@ -16,9 +16,9 @@ if ~strcmp(settings.AwardType,'Sponsored Research')
 	end
 
 	% get total on grant 
-% 	totals = readtable(['./axiom_data/ProjectBalances.xlsx']);
-% 	idx=strcmp(settings.grant_no,totals.Project);
-% 	settings.budget = totals.C_Fwd(idx);
+	totals = readtable(['./axiom_data/ProjectBalances.xlsx']); % income & expenditures -> project report - project balances dann im filter unter project names alle projekte highlighten 
+	idx=strcmp(settings.grant_no,totals.Project);
+	settings.budget = totals.C_Fwd(idx);
 end
 
 %% select relevant columns

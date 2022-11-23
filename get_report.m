@@ -75,7 +75,7 @@ if settings.verbose
 			  fprintf([subcategories_desc{c} ':'])
 			  fprintf(['\t current expenditure: \t £' num2str(total.(subcategories_desc{c}),'%010.2f') '\n'])
 		 end
-		 tot_bud = settings.budget(1); 
+		 tot_bud = settings.budget; 
 	 end
     fprintf(['total expenditure: \t £' num2str(tot_spent,'%010.2f') '\n'])
     fprintf(['total budget: \t\t\t £' num2str(tot_bud,'%010.2f') '\n'])

@@ -16,6 +16,7 @@ for g = 1:length(list)
     load(list(g).name)
     settings.verbose = 1;
     settings.report_dir = [fn(1) ':\myDocuments\work\MPC_admin\Finance\overviews\' datestr(datetime('today'),'yyyy_mm') '\'];
+    mkdir(settings.report_dir)
     settings.save_plot = 1;
     
     %% load data
