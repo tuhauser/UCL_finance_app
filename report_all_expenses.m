@@ -7,7 +7,7 @@ all_data = all_data(find(datenum(all_data.TransactionDate)>=startdat),:);
 
 %% create report for each category separately
 fileID = fopen([settings.report_dir datestr(datetime('today'),'yyyy_mm') '_' settings.grant_name{:} '_detailedReport.txt'],'w');
-for c = 1:length(settings.categories_desc)
+for c = 1:length(settings.categories)
     fprintf(fileID,[settings.categories_desc{c} ' (' settings.categories{c} '):\n']);
     
     % find entries

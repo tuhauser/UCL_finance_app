@@ -1,4 +1,4 @@
-function [report, total] =  get_report(data, settings)
+function [report, total,settings] =  get_report(data, settings)
 
 %% pre-requirements
 categories = settings.categories;
@@ -12,6 +12,18 @@ if ~issponsoredresearch
 	if ~isempty(subcategories); subcategories_desc = settings.subcategories_desc; end
 end
 
+%% add categories that dont exist yet
+if any(cellfun(@(x) ~ismember(x,categories),data.TaskNumber))
+    idx_newCat = find(cellfun(@(x) ~ismember(x,categories),data.TaskNumber));
+    for i = 1:length(idx_newCat)
+        warning(['new category added: ' data.TaskNumber{idx_newCat(i)}])
+        categories{end+1} = data.TaskNumber{idx_newCat(i)};
+        settings.budget(end+1) = 0;
+        settings.categories_desc{end+1} = '';
+    end
+    settings.categories = categories;
+end
+
 %% find descriptions for categories
 UCL = load('UCL_categories.mat');
 cat_desc = [];
@@ -19,6 +31,7 @@ for c = 1:length(categories)
     idx = find(strcmp(UCL.categories.type,categories{c}));
     cat_desc{c} = UCL.categories.name{idx};
 end
+
 
 %% aggregate per period
 if issponsoredresearch
@@ -115,7 +128,9 @@ if settings.verbose
 			 end
 		 end
 		 % total budget
+         try
 		 plot(datetime('today'),settings.budget/1000,'r+'); 
+         end
 		 plot(periods,tot_spent,'k-','linewidth',4); 
 		 leg = subcategories_desc(2:end); leg{end+1} = 'Total Budget'; leg{end+1} = 'Total spent';
     	legend(leg,'Location','northwest','Interpreter','none')
